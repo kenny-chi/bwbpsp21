@@ -87,10 +87,13 @@ export async function getUser(user: UserRecord, cached = false): Promise<UserRec
     uname: 'jenhoang',
     graduated: true,
   };
+  if (testUser.uname == user?.uname && testUser.password == user?.password) {
+    return testUser;
+  } else {
+    return null;
+  }
 
-  return testUser;
-
-  // FOR THOSE WHO ARE INTERESTED IN HOW IT'S ACTUALLY IMPLEMENTED
+  // FOR THOSE WHO ARE INTERESTED IN HOW IT'S ACTUALLY IMPLEMETED
   if (cached) {
     return getStoredUser();
   }
